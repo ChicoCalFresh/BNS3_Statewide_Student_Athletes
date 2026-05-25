@@ -105,16 +105,16 @@ library(huxtable)
 tmp <- as.data.frame.matrix(table(bns$monthly_hh_income, bns$household_size))
 
 
-huxtable(tmp, add_rownames = "") %>% set_background_color(2:12, 2:9, "tomato") %>%
+huxtable(tmp, add_rownames = "") %>% set_background_color(2:12, 2:8, "tomato") %>%
   set_background_color(2:3, 2, "darkolivegreen3") %>% set_background_color(2:4, 3, "darkolivegreen3") %>% 
   set_background_color(2:5, 4, "darkolivegreen3") %>% set_background_color(2:6, 5, "darkolivegreen3") %>% 
   set_background_color(2:7, 6, "darkolivegreen3") %>% set_background_color(2:8, 7, "darkolivegreen3") %>% 
-  set_background_color(2:9, 8, "darkolivegreen3") %>% set_background_color(2:10, 9, "darkolivegreen3") %>%
-  set_background_color(11:12, 9, "yellow") %>%
+  set_background_color(2:9, 8, "darkolivegreen3") %>% set_background_color(2:10, 8, "darkolivegreen3") %>%
+  set_background_color(11:12, 8, "yellow") %>%
   set_bold(2:3, 2) %>% set_bold(2:4, 3) %>% set_bold(2:5, 4) %>% set_bold(2:6, 5) %>% set_bold(2:7, 6) %>% 
-  set_bold(2:8, 7) %>%  set_bold(2:9, 8) %>% set_bold(2:10, 9) %>% 
+  set_bold(2:8, 7) %>%  set_bold(2:9, 8) %>% set_bold(2:10, 8) %>% 
   set_italic(4:10, 2) %>% set_italic(5:10, 3) %>% set_italic(6:10, 4) %>% set_italic(7:10, 5) %>% 
-  set_italic(8:10, 6) %>% set_italic(9:10, 7) %>%  set_italic(10, 8) %>% set_italic(11, 9) %>%
+  set_italic(8:10, 6) %>% set_italic(9:10, 7) %>%  set_italic(10, 8) %>% set_italic(11, 8) %>%
   set_all_borders(brdr(3, "solid", "white")) %>% map_align(by_cols("center")) %>% set_font_size(12) %>% set_caption("Household Size:") %>%
   set_width(1.0)
 
@@ -145,7 +145,7 @@ huxtable(tmp, add_rownames = "") %>% set_background_color(2:12, 2:9, "tomato") %
 
 c1 <- data.frame(bns$calfresh_eligible) %>% na.omit()
 c1 <- c1 %>% mutate(ifelse(bns.calfresh_eligible==0, "No", "Yes"))
-plot_frq(c1$`ifelse(bns.calfresh_eligible == 0, "No", "Yes")`, geom.colors = plot_color,  ylim=c(0,1600)) + 
+plot_frq(c1$`ifelse(bns.calfresh_eligible == 0, "No", "Yes")`, geom.colors = plot_color,  ylim=c(0,45)) + 
   xlab('Likely Eligible for CalFresh Food') + ylab("Number of Students")
 ```
 :::
@@ -224,9 +224,9 @@ Only students who reported currently using CalFresh Food or used it in the past 
 #| fig-cap-location: top
 #| fig-cap: !expr sprintf("%s CalFresh Food Application Household Size %s & %s Number of People Fed Through EBT %s.", NextFigure(), print_n_reporting('q47'), NextFigure(), print_n_reporting('fed_through_EBT'))
 #| fig-width: 9
-p1 <- plot_frq(bns$q47, geom.colors = plot_color, wrap.title = 40, ylim=c(0,500), wrap.labels = 15) +
+p1 <- plot_frq(bns$q47, geom.colors = plot_color, wrap.title = 40, ylim=c(0,10), wrap.labels = 15, y.offset = y.off(bns$q47)) +
   xlab('\nDid you apply for CalFresh EBT as an individual \nor with other people in your household?') + ylab("Number of Students")
-p2 <- plot_frq(bns$fed_through_EBT, geom.colors = plot_color, wrap.title = 40) + 
+p2 <- plot_frq(bns$fed_through_EBT, geom.colors = plot_color, wrap.title = 40, y.offset = y.off(bns$fed_through_EBT)) + 
   xlab('\nHow many people in the household are regularly \nfed through your CalFresh EBT card?')
 
 grid.arrange(p1, p2, nrow = 1)
@@ -272,13 +272,13 @@ tmp <- bns %>% group_by(fed_through_EBT) %>%
                        fed_through_EBT = as.character(fed_through_EBT),
                        avg = paste0("$", format(avg, nsmall=2)))
 
-tmp[9,] <- list("", "Total Average", round(mean(tmp$HH.avg),2))
+tmp[4,] <- list("", "Total Average", round(mean(tmp$HH.avg),2))
 tmp <- tmp %>% mutate(HH.avg = paste0("$", format(HH.avg, nsmall=2)))
 tmp2 <- tmp
 colnames(tmp2) <- c("Number of People Fed Through EBT", "Household Average EBT", "Per Person Average EBT")
 
 tmp2 %>% kable() %>% kable_styling(bootstrap_options = "striped") %>%
-  row_spec(9, bold=TRUE)
+  row_spec(4, bold=TRUE)
 ```
 
 **Survey Questions:**
@@ -303,7 +303,7 @@ bns$q50_tmp <- recode(bns$q50, "Strongly agree" = "Strongly \nagree",
                       "Strongly disagree" = "Strongly \ndisagree",
                       "Neither agree nor disagree" = "Neither agree \nnor disagree")
   
-p3 <- plot_frq(bns$q50_tmp, geom.colors = plot_color, ylim=c(0,200)) + 
+p3 <- plot_frq(bns$q50_tmp, geom.colors = plot_color, ylim=c(0,5), y.offset = y.off(bns$q50)) + 
   xlab('\nI feel that the amount that is added to my CalFresh EBT card each \nmonth is enough money to provide healthy food for the month.') + 
   theme(axis.text=element_text(size=9), #change font size of axis text
         axis.title=element_text(size=9))  + #change font size of axis titles
@@ -311,7 +311,7 @@ p3 <- plot_frq(bns$q50_tmp, geom.colors = plot_color, ylim=c(0,200)) +
 
 
 
-p4 <- plot_frq(bns$q51, geom.colors = plot_color, ylim=c(0, 210), wrap.labels = 12) + 
+p4 <- plot_frq(bns$q51, geom.colors = plot_color, ylim=c(0, 5), y.offset = y.off(bns$q51), wrap.labels = 12) + 
   xlab('\nWhen do you typically use up the balance \non your CalFresh EBT card?')+ 
   theme(axis.text=element_text(size=9), #change font size of axis text
         axis.title=element_text(size=9)) #change font size of axis titles

@@ -107,7 +107,7 @@ plot_frq(rec$q7, sort.frq="desc", geom.colors = plot_color) + xlab('Gender') + y
 #| fig-cap: !expr sprintf("%s Ethnic/Hispanic Identity %s.", NextFigure(), print_n_reporting_tmp('hispanic'))
 tmp <- data.frame(q8=bns$q8) %>% mutate(hispanic=as.factor(ifelse(is.na(q8), NA, ifelse(grepl("Yes", q8), "Hispanic", "Non-Hispanic")))) %>% select(-q8)
 
-plot_frq(tmp$hispanic, geom.colors = plot_color, ylim=c(0, 1800)) + xlab("") + ylab("Number of Students")
+plot_frq(tmp$hispanic, geom.colors = plot_color, ylim=c(0, 50)) + xlab("") + ylab("Number of Students")
 ```
 :::
 
@@ -255,7 +255,7 @@ tmp2 <- as.data.frame(table(bns$q13)) %>%
          Var1=recode(Var1, "Other/Unknown" = "Other/ Unknown")) %>% arrange((desc(Freq)))
 
 ggplot(tmp2, aes(x=factor(Var1, levels=Var1), y=Freq, fill=FirstGen, label=Percent)) + geom_col(colour = "black") +
-  scale_fill_manual(values=c("#336699", "#00944d", "grey")) + geom_text(aes(y=Freq+50)) + ylim(0,900) +
+  scale_fill_manual(values=c("#336699", "#00944d", "grey")) + geom_text(aes(y=Freq+50)) + ylim(0,25) +
   scale_x_discrete(labels=label_wrap(10)) +   geom_text(aes(y=Freq + 100, label=Freq)) +
   xlab('') + ylab("Number of Students") + theme(legend.position = "none") + theme(axis.text.x = element_text(size = 10))
 ```
@@ -281,7 +281,7 @@ ggplot(tmp2, aes(x=factor(Var1, levels=Var1), y=Freq, fill=FirstGen, label=Perce
 tmp3 <- data.frame(firstgen=bns$firstgen) %>% 
   mutate(firstgen=factor(ifelse(is.na(firstgen), NA, ifelse(firstgen == 0, "Not First Gen", "First Gen")), levels=c("Not First Gen", "First Gen")))
 
-plot_frq(tmp3$firstgen, geom.colors = plot_color, ylim=c(0, 2300)) + xlab('') + ylab("Number of Students")
+plot_frq(tmp3$firstgen, geom.colors = plot_color, ylim=c(0, 60)) + xlab('') + ylab("Number of Students")
 ```
 :::
 

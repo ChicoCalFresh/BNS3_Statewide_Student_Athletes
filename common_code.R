@@ -7,7 +7,8 @@ library(kableExtra)
 library(questionr)
 library(gridExtra)
 library(ggpubr) 
-library(scales) 
+library(scales)
+library(chcRne)
 library(huxtable) # only used once in CalFresh 
 
 # Load data ---- 
@@ -17,7 +18,7 @@ PATH_TO_BOX <- "C:/Users/slmooradian/Box/" # Saul
 #PATH_TO_BOX <- "C:/Users/shady/Box/" # Shady
 
 bns <- readRDS(paste0(PATH_TO_BOX, "CHC All/01. Projects Active/CFO (SP6511801)/08. Research and Evaluation/03 - Data Analysis/BNS3-statewide/data/bns3_statewide_clean.rds")) |> 
-  filter(!is.na(school))
+  filter(!is.na(school)) %>% filter(q14_10 == "Yes")
 
 # Global options
 opts_chunk$set(echo = FALSE, warning=FALSE, message=FALSE, cache=FALSE, 

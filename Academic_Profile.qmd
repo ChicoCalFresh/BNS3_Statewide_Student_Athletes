@@ -133,7 +133,7 @@ bns$q15 <- recode(bns$q15,
               "Junior (60-89 semester units or 90-134 quarter units)" = "Junior",
               "Senior (90+ semester units or 135+ quarter units)" = "Senior")
               
-plot_frq(bns$q15, geom.colors = plot_color, wrap.labels = 8, ylim=c(0,750)) + xlab('Class Standing') + 
+plot_frq(bns$q15, geom.colors = plot_color, wrap.labels = 8, ylim=c(0, 20)) + xlab('Class Standing') + 
   ylab("Number of Students")
 ```
 
@@ -152,7 +152,7 @@ plot_frq(bns$q15, geom.colors = plot_color, wrap.labels = 8, ylim=c(0,750)) + xl
 bns <- bns %>% mutate(q16=recode(q16, 
                                  "Science, Technology, Engineering and Math (STEM) (Includes Medicine, Computer Science, Agriculture, Accounting, Statistics, Nursing, and Nutrition)" = "Science, Technology, Engineering, and Math (STEM)"))
 
-plot_frq(bns$q16, geom.colors = plot_color, ylim=c(0,875), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Number of Students") + theme(axis.text.x = element_text(size = 10))
+plot_frq(bns$q16, geom.colors = plot_color, ylim=c(0,25), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Number of Students") + theme(axis.text.x = element_text(size = 10))
 
 ```
 

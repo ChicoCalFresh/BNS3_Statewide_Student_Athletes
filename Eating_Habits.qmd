@@ -207,7 +207,7 @@ plot_frq(bns$q80, geom.colors = plot_color) + xlab('Weekly Alcohol Intake') + yl
 
 
 
-plot_frq(bns$q81, geom.colors = plot_color) + xlab('Alcohol Servings Consumed When Drinking') + ylab("Number of Students")
+plot_frq(bns$q81, geom.colors = plot_color, y.offset = y.off(bns$q81)) + xlab('Alcohol Servings Consumed When Drinking') + ylab("Number of Students")
 
 ```
 

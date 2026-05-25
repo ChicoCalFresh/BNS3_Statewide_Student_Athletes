@@ -117,7 +117,7 @@ bns$GAD7 <- case_when(bns$GAD7_tmp >= 15 ~ "Severe anxiety",
 #| fig-cap: !expr sprintf("%s Generalized Anxiety Classification %s.", NextFigure(), print_n_reporting('GAD7'))
 
 
-plot_frq(bns$GAD7, geom.colors = plot_color, ylim=c(0,650), wrap.labels = 16) + xlab('') + ylab("Number of Students")
+plot_frq(bns$GAD7, geom.colors = plot_color, ylim=c(0,20), wrap.labels = 16) + xlab('') + ylab("Number of Students")
 
 ```
 
@@ -215,7 +215,7 @@ bns$PHQ9 <- case_when(bns$PHQ9_tmp >= 20 ~ "Severe depression",
 ```{r}
 #| fig-cap: !expr sprintf("%s Depression Severity Classification %s.", NextFigure(), print_n_reporting('PHQ9'))
 
-plot_frq(bns$PHQ9, geom.colors = plot_color, ylim=c(0,650), wrap.labels = 14) + xlab('') + ylab("Number of Students")
+plot_frq(bns$PHQ9, geom.colors = plot_color, ylim=c(0,15), wrap.labels = 14) + xlab('') + ylab("Number of Students")
 
 ```
 
@@ -234,7 +234,7 @@ plot_frq(bns$PHQ9, geom.colors = plot_color, ylim=c(0,650), wrap.labels = 14) + 
 
 ```{r}
 #| fig-cap: !expr sprintf("%s Suicidal Thoughts %s.", NextFigure(), print_n_reporting('q110'))
-plot_frq(bns$q110, geom.colors = plot_color, ylim=c(0,300), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Number of Students")
+plot_frq(bns$q110, geom.colors = plot_color, ylim=c(0,10), wrap.labels = 16, sort.frq = 'desc') + xlab('') + ylab("Number of Students")
 ```
 
 
@@ -253,7 +253,7 @@ plot_frq(bns$q110, geom.colors = plot_color, ylim=c(0,300), wrap.labels = 16, so
 ```{r}
 #| fig-cap: !expr sprintf("%s Mental Health Services Access %s.", NextFigure(), print_n_reporting('q113'))
 
-plot_frq(bns$q113, geom.colors = plot_color, ylim=c(0,1500), wrap.labels = 16, sort.frq = 'desc') + xlab('Mental Health Services Access') + ylab("Number of Students")
+plot_frq(bns$q113, geom.colors = plot_color, ylim=c(0,45), wrap.labels = 16, sort.frq = 'desc') + xlab('Mental Health Services Access') + ylab("Number of Students")
 ```
 
 **Survey Question:** *We are interested in understanding your experience with campus-based mental health supports. This might include a counselor, therapist, or group-based counseling. Do you have access to mental health services on your campus?*
@@ -300,7 +300,7 @@ access_mhs_vars %>%
 ```{r}
 #| fig-cap: !expr sprintf("%s Mental Health Services Use %s.", NextFigure(), print_n_reporting('q114'))
 
-plot_frq(bns$q114, geom.colors = plot_color, ylim=c(0,1500), wrap.labels = 16, sort.frq = 'desc') + xlab('Use of Campus Mental Health Services') + ylab("Number of Students")
+plot_frq(bns$q114, geom.colors = plot_color, ylim=c(0,30), wrap.labels = 16, sort.frq = 'desc') + xlab('Use of Campus Mental Health Services') + ylab("Number of Students")
 ```
 
 
