@@ -11,14 +11,14 @@ library(dplyr)
 library(ggplot2)
 
 # 1) Create Vector of Names of Schools
-Names <- c("Allan Hancock CC (n = 112)", "Butte CC (n = 132)" ,
-           "Mt. SAC CC (n = 270)", "Clovis CC (n = 140)", 
-           "Palo Verde CC (n = 36)",
-           "Cal State San Bernardino (n = 191)", 
-           "CSU Bakersfield (n = 114)", "Sacramento State (n = 253)",
-           "CSU Dominguez Hills (n = 58)", 
-           "San Francisco State (n = 279)", 
-           "Cal State LA (n = 343)", "UC Berkeley (n = 182)", NA)
+Names <- c("Allan Hancock CC (n = 2)", "Butte CC (n = 1)" ,
+           "Mt. SAC CC (n = 5)", "Clovis CC (n = 4)", 
+           "Palo Verde CC (n = 2)",
+           "Cal State San Bernardino (n = 5)", 
+           "CSU Bakersfield (n = 2)", "Sacramento State (n = 5)",
+           "CSU Dominguez Hills (n = 2)", 
+           "San Francisco State (n = 8)", 
+           "Cal State LA (n = 8)", "UC Berkeley (n = 6)", NA)
 
 
 # 2) Set Lat (from Google Maps)
@@ -78,10 +78,6 @@ ggplot() +
 ## Use of Website and Access to Data
 
 Please reach out to our PI, Stephanie Bianco [sbianco\@csuchico.edu]{style="color: blue; text-decoration: underline;"}, if you would like more information on using or citing this website, accessing the data, methods used, or survey instruments used.
-
-## How to Cite This Website
-
-Center for Healthy Communities. (2023). Statewide Basic Needs and Student Success Survey. https://chicocalfresh.github.io/BNS3_Statewide_Summary/
 
 ## Related Work
 
