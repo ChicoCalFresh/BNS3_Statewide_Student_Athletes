@@ -64,7 +64,7 @@ gghistogram(bns, x = "paid_work_hours", add = "mean", fill = plot_color, alpha =
 ```{r}
 #| fig-width: 8
 #| fig-cap: !expr sprintf("%s Impact of COVID %s.", NextFigure(), print_n_reporting('q20'))
-plot_frq(bns$q20, geom.colors = plot_color, ylim=c(0,700), wrap.labels = 19, sort.frq = 'desc') + xlab('') + ylab("Number of Students")
+plot_frq(bns$q20, geom.colors = plot_color, ylim=c(0,15), wrap.labels = 19, sort.frq = 'desc', y.offset=y.off(bns$q20)) + xlab('') + ylab("Number of Students")
 
 ```
 
